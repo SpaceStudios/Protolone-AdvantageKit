@@ -111,5 +111,5 @@ public class DriveConstants {
               driveMotorCurrentLimit,
               1),
           moduleTranslations);
-    public static final boolean useGyro = true;
+  public static final boolean useGyro = true;
 }

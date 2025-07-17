@@ -67,14 +67,24 @@ public class RobotContainer {
       case SIM:
         // Sim robot, instantiate physics sim IO implementations
         drive =
-            new Drive(new ModuleIOSim(), new ModuleIOSim(), new ModuleIOSim(), new ModuleIOSim(), new GyroIO() {});
+            new Drive(
+                new ModuleIOSim(),
+                new ModuleIOSim(),
+                new ModuleIOSim(),
+                new ModuleIOSim(),
+                new GyroIO() {});
         // shooter = new Shooter(new ShooterIO() {});
         break;
 
       default:
         // Replayed robot, disable IO implementations
         drive =
-            new Drive(new ModuleIO() {}, new ModuleIO() {}, new ModuleIO() {}, new ModuleIO() {}, new GyroIO() {});
+            new Drive(
+                new ModuleIO() {},
+                new ModuleIO() {},
+                new ModuleIO() {},
+                new ModuleIO() {},
+                new GyroIO() {});
         // shooter = new Shooter(new ShooterIO() {});
         break;
     }

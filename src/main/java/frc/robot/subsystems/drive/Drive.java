@@ -43,8 +43,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import frc.robot.Constants;
-import frc.robot.Robot;
 import frc.robot.Constants.Mode;
+import frc.robot.Robot;
 import frc.robot.subsystems.drive.Module.TestMotor;
 import frc.robot.subsystems.sensor.LaserCanIO;
 import frc.robot.util.LocalADStarAK;
@@ -74,11 +74,16 @@ public class Drive extends SubsystemBase {
   private SwerveDrivePoseEstimator poseEstimator =
       new SwerveDrivePoseEstimator(
           kinematics, rawGyroRotation, lastModulePositions, new Pose2d(10.29, 4, Rotation2d.kZero));
-  
+
   private final GyroIO gyroIO;
   private final LaserCanIO laserCan;
 
-  public Drive(ModuleIO flModuleIO, ModuleIO frModuleIO, ModuleIO blModuleIO, ModuleIO brModuleIO, GyroIO gyroIO) {
+  public Drive(
+      ModuleIO flModuleIO,
+      ModuleIO frModuleIO,
+      ModuleIO blModuleIO,
+      ModuleIO brModuleIO,
+      GyroIO gyroIO) {
     modules[0] = new Module(flModuleIO, 0);
     modules[1] = new Module(frModuleIO, 1);
     modules[2] = new Module(blModuleIO, 2);
@@ -122,7 +127,7 @@ public class Drive extends SubsystemBase {
                 (state) -> Logger.recordOutput("Drive/SysIdState", state.toString())),
             new SysIdRoutine.Mechanism(
                 (voltage) -> runCharacterization(voltage.in(Volts)), null, this));
-    
+
     this.gyroIO = gyroIO;
     this.laserCan = new LaserCanIO(11, 55);
   }

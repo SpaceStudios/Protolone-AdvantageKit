@@ -9,20 +9,20 @@ import au.grapplerobotics.interfaces.LaserCanInterface.Measurement;
 
 /** Add your docs here. */
 public class LaserCanIO {
-    private final LaserCan laserCan;
-    private final double threshold;
-    public LaserCanIO(int id, double threshold) {
-        laserCan = new LaserCan(id);
-        this.threshold = threshold;
-    }
+  private final LaserCan laserCan;
+  private final double threshold;
 
+  public LaserCanIO(int id, double threshold) {
+    laserCan = new LaserCan(id);
+    this.threshold = threshold;
+  }
 
-    public boolean detected() {
-        Measurement measurement = laserCan.getMeasurement();
-        if (measurement.status == LaserCan.LASERCAN_STATUS_VALID_MEASUREMENT) {
-            return measurement.distance_mm <= threshold;
-        } else {
-            return false;
-        }
+  public boolean detected() {
+    Measurement measurement = laserCan.getMeasurement();
+    if (measurement.status == LaserCan.LASERCAN_STATUS_VALID_MEASUREMENT) {
+      return measurement.distance_mm <= threshold;
+    } else {
+      return false;
     }
+  }
 }
